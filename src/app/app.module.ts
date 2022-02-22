@@ -11,6 +11,8 @@ import { CustomDatePipe } from './core/pipes/custom-date.pipe';
 import { HomeComponent } from './core/components/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgMaterialsModule } from './widget-module/ng-materials/ng-materials.module';
+import { SharedModule } from './shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -27,7 +29,8 @@ import { NgMaterialsModule } from './widget-module/ng-materials/ng-materials.mod
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    NgMaterialsModule
+    NgMaterialsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
