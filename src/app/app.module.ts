@@ -13,6 +13,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgMaterialsModule } from './widget-module/ng-materials/ng-materials.module';
 import { SharedModule } from './shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
+import { HttpErrorInterceptor } from './core/interceptors/http-error.interceptor';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -28,13 +32,25 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot(), // ToastrModule added
+    AppRoutingModule,
     NgMaterialsModule,
     ReactiveFormsModule,
-    // ToastrModule.forRoot(), // ToastrModule added
+   
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

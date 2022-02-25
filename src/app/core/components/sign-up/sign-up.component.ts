@@ -31,6 +31,8 @@ export class SignUpComponent implements OnInit {
     let formData = this.signUpFrom.value;
     if(localStorage.getItem('usersList') == null){
       localStorage.setItem('usersList',JSON.stringify([formData]));
+      alert('Account has been created successfully');
+      this.router.navigate(['login']);
     }else{
       let users = JSON.parse(localStorage.getItem('usersList') || '{}');
       const checkDuplicate = users.some((element:any)=>{

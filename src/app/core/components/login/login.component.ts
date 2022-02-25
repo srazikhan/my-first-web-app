@@ -40,9 +40,12 @@ export class LoginComponent implements OnInit {
     })
     console.log(checkDuplicate);
     if(checkDuplicate){
-      alert('Login Successfull')
+      alert('Login Successfull');
+      const jwtToken:string = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlNhamphZCBSYXppIiwiZW1haWwiOiJzYWpqYWRAZ21haWwuY29tIiwiaWF0IjoxNTE2MjM5MDIyfQ.oerosIp2xKnxmY7yjPk9_D-i82iA-G6d4wGrMXZFA8w";
+      localStorage.setItem('token',jwtToken);
+      this.router.navigate(['users']);
     }else{
-      alert('Enter valid username and password')
+      alert('Enter valid username and password');
     }
   }
 }
